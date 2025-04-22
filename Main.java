@@ -5,17 +5,35 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("~Мій щоденник~");
-        mynote();
+        menu();
     }
-    public static void mynote() {
+        public static void menu() {
         LocalDate[] massdat = new LocalDate[5];
         String[] str1 = new String[5];
+            System.out.println("~Мій щоденник~");
+            mynote(massdat, str1);
+    }
+    public static LocalDate[] mynote(LocalDate[] massdat, String[] str1) {
         Scanner sc = new Scanner(System.in);
         Scanner sc1 = new Scanner(System.in);
-        try {
+        Scanner sc3 = new Scanner(System.in);
         while (true) {
+            try {
             for (int i = 0; i < massdat.length; i++) {
+                if (i > 2) {
+                    System.out.println("Список повний.");
+                    System.out.println("Бажаєте перевірити записи?: ");
+                    String str2 = sc3.nextLine();
+                    if (str2.equals("Так")) {
+                        System.out.println(Arrays.toString(massdat));
+                        System.out.println(Arrays.toString(str1));
+                        System.out.println("Бажаєте повернутися на головне меню?: ");
+                        String string = sc3.nextLine();
+                        if (string.equals("Так")) {
+                            menu();
+                        }
+                    }
+                } else if (i < 2) {
                     System.out.println("Введіть рік: ");
                     int year = sc.nextInt();
                     System.out.println("Введіть місяць: ");
@@ -27,34 +45,20 @@ public class Main {
                     String str = sc1.nextLine();
                     System.out.println("Ваша дата: " + data);
                     System.out.println("Ваш запис: " + str);
-
                     massdat[i] = data;
                     str1[i] = str;
-                    System.out.println(Arrays.toString(massdat));
-                    System.out.println(Arrays.toString(str1));
-
-//        System.out.println("Бажаете видалити деякий запис?: ");
-//        String str2 = sc2.nextLine();
-//        if(str2.equals("Так")) {
-//            Scanner scanner = new Scanner(System.in);
-//            System.out.println("Введіть рік який хочете видалити: ");
-//            int data1 = scanner.nextInt();
-//            System.out.println("Введіть місяць який хочете видалити: ");
-//            int data2 = scanner.nextInt();
-//            System.out.println("Введіть день який хочете видалити: ");
-//            int data3 = scanner.nextInt();
-//            if(data1 == year && data2 == month && data3 == day) {
-//                massdat[i] = null;
-//                System.out.println(Arrays.toString(massdat));
-//            }
-//        } else if(str2.equals("Ні")) {
-//            continue;
-//        }
-
+                    System.out.println("Бажаєте перевірити записи?(якщо ні, натисніть Enter): ");
+                    String str2 = sc3.nextLine();
+                    if (str2.equals("Так")) {
+                        System.out.println(Arrays.toString(massdat));
+                        System.out.println(Arrays.toString(str1));
+                    }
+                }
             }
-        }
-    } catch (DateTimeException e) {
+            }catch (DateTimeException e) {
             System.out.println("Ви ввели не вірну дату: " + e.getMessage());
         }
-        }
+        return massdat;
 }
+}
+        }
