@@ -21,21 +21,7 @@ public class Main {
         Scanner sc3 = new Scanner(System.in);
         while (true) {
             try {
-            for (int i = 0; i < massdat.length; i++) {
-                if (i == 5) {
-                    System.out.println("Список повний.");
-                    System.out.println("Бажаєте перевірити записи?: ");
-                    String str2 = sc3.nextLine();
-                    if (str2.equals("Так")) {
-                        System.out.println(Arrays.toString(massdat));
-                        System.out.println(Arrays.toString(str1));
-                        System.out.println("Бажаєте повернутися на головне меню?: ");
-                        String string = sc2.nextLine();
-                        if (string.equals("Так")) {
-                            menu();
-                        }
-                    }
-                } else if (i < 5) {
+            for (int i = 0; i < massdat.length;) {
                     System.out.println("Введіть рік: ");
                     int year = sc.nextInt();
                     System.out.println("Введіть місяць: ");
@@ -49,11 +35,19 @@ public class Main {
                     System.out.println("Ваш запис: " + str);
                     massdat[i] = data;
                     str1[i] = str;
-                    System.out.println("Бажаєте перевірити записи?(якщо ні, натисніть Enter): ");
+                    i++;
+                if (i == 5) {
+                    System.out.println("Список повний.");
+                    System.out.println("Бажаєте перевірити записи?: ");
                     String str2 = sc3.nextLine();
                     if (str2.equals("Так")) {
                         System.out.println(Arrays.toString(massdat));
                         System.out.println(Arrays.toString(str1));
+                        System.out.println("Бажаєте повернутися на головне меню?: ");
+                        String string = sc2.nextLine();
+                        if (string.equals("Так")) {
+                            menu();
+                        }
                     }
                 }
             }
