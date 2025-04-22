@@ -1,6 +1,7 @@
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -16,11 +17,12 @@ public class Main {
     public static LocalDate[] mynote(LocalDate[] massdat, String[] str1) {
         Scanner sc = new Scanner(System.in);
         Scanner sc1 = new Scanner(System.in);
+        Scanner sc2 = new Scanner(System.in);
         Scanner sc3 = new Scanner(System.in);
         while (true) {
             try {
             for (int i = 0; i < massdat.length; i++) {
-                if (i > 5) {
+                if (i == 5) {
                     System.out.println("Список повний.");
                     System.out.println("Бажаєте перевірити записи?: ");
                     String str2 = sc3.nextLine();
@@ -28,7 +30,7 @@ public class Main {
                         System.out.println(Arrays.toString(massdat));
                         System.out.println(Arrays.toString(str1));
                         System.out.println("Бажаєте повернутися на головне меню?: ");
-                        String string = sc3.nextLine();
+                        String string = sc2.nextLine();
                         if (string.equals("Так")) {
                             menu();
                         }
@@ -57,7 +59,9 @@ public class Main {
             }
             }catch (DateTimeException e) {
             System.out.println("Ви ввели не вірну дату: " + e.getMessage());
-        }
+        } catch (InputMismatchException e) {
+                System.out.println("Помилка: " + e.getMessage());
+            }
         return massdat;
 }
 }
