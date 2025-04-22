@@ -11,13 +11,10 @@ public class Main {
     public static void mynote() {
         LocalDate[] massdat = new LocalDate[5];
         String[] str1 = new String[5];
-        Scanner sc2 = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         try {
         while (true) {
             for (int i = 0; i < massdat.length; i++) {
-                for (int j = 0; j < str1.length; j++) {
-                    Scanner sc = new Scanner(System.in);
-                    Scanner sc1 = new Scanner(System.in);
                     System.out.println("Введіть рік: ");
                     int year = sc.nextInt();
                     System.out.println("Введіть місяць: ");
@@ -26,15 +23,15 @@ public class Main {
                     int day = sc.nextInt();
                     LocalDate data = LocalDate.of(year, month, day);
                     System.out.println("Введіть запис на цю дату: ");
-                    String str = sc1.nextLine();
+                    String str = sc.nextLine();
                     System.out.println("Ваша дата: " + data);
                     System.out.println("Ваш запис: " + str);
 
                     massdat[i] = data;
-                    str1[j] = str;
+                    str1[i] = str;
                     System.out.println(Arrays.toString(massdat));
                     System.out.println(Arrays.toString(str1));
-                    i++;
+
 //        System.out.println("Бажаете видалити деякий запис?: ");
 //        String str2 = sc2.nextLine();
 //        if(str2.equals("Так")) {
@@ -52,7 +49,7 @@ public class Main {
 //        } else if(str2.equals("Ні")) {
 //            continue;
 //        }
-                }
+
             }
         }
     } catch (DateTimeException e) {
