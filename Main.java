@@ -20,7 +20,7 @@ public class Main {
         while (true) {
             try {
             for (int i = 0; i < massdat.length; i++) {
-                if (i > 2) {
+                if (i > 5) {
                     System.out.println("Список повний.");
                     System.out.println("Бажаєте перевірити записи?: ");
                     String str2 = sc3.nextLine();
@@ -33,7 +33,7 @@ public class Main {
                             menu();
                         }
                     }
-                } else if (i < 2) {
+                } else if (i < 5) {
                     System.out.println("Введіть рік: ");
                     int year = sc.nextInt();
                     System.out.println("Введіть місяць: ");
