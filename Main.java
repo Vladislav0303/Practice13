@@ -12,6 +12,7 @@ public class Main {
         LocalDate[] massdat = new LocalDate[5];
         String[] str1 = new String[5];
         Scanner sc = new Scanner(System.in);
+        Scanner sc1 = new Scanner(System.in);
         try {
         while (true) {
             for (int i = 0; i < massdat.length; i++) {
@@ -23,7 +24,7 @@ public class Main {
                     int day = sc.nextInt();
                     LocalDate data = LocalDate.of(year, month, day);
                     System.out.println("Введіть запис на цю дату: ");
-                    String str = sc.nextLine();
+                    String str = sc1.nextLine();
                     System.out.println("Ваша дата: " + data);
                     System.out.println("Ваш запис: " + str);
 
